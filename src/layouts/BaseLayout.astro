@@ -1,0 +1,28 @@
+---
+import "../styles/global.css";
+const { title = "El Lodazal de los Antiguos", children } = Astro.props;
+import NavBar from "../components/NavBar.astro";
+
+---
+
+<!DOCTYPE html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content="Campaña de Wicked Ones: El Lodazal de los Antiguos" />
+    <link rel="icon" href="/favicon.svg" />
+  </head>
+  <body class="bg-background text-base font-serif min-h-screen flex flex-col">
+    <NavBar />
+
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <footer class="text-center text-secondary text-sm py-6">
+      © {new Date().getFullYear()} El Lodazal de los Antiguos · Campaña de Wicked Ones
+    </footer>
+  </body>
+</html>

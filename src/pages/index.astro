@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import MainCard from "../components/MainCard.astro";
+---
+
+<BaseLayout title="El Lodazal de los Antiguos">
+  <section class="bg-background text-base max-w-5xl mx-auto px-6 py-20">
+    <header class="mb-12 text-center">
+      <h1 class="text-5xl font-bold text-primary font-serif mb-4">
+        El Lodazal de los Antiguos
+      </h1>
+      <p class="text-secondary text-lg leading-relaxed max-w-2xl mx-auto">
+        Bienvenido a la campaña de <strong>Wicked Ones</strong> ambientada en <em>Las Fauces del Vórtice</em>, donde monstruos de las profundidades forjan su destino en una mazmorra viva, hambrienta y llena de posibilidades.
+      </p>
+    </header>
+
+    <div class="grid sm:grid-cols-2 gap-6 mb-10">
+      <MainCard 
+        href="/characters"
+        image="/images/drogo.png"
+        title="Personajes jugadores"
+        description="Los monstruos que lo arriesgan todo por un lugar en la oscuridad."
+      />
+      <MainCard 
+        href="/sandbox"
+        image="/images/entorno_small.jpg"
+        title="Entorno"
+        description="Las peligrosas tierras que rodean tu mazmorra."
+      />
+      <MainCard 
+        href="/dungeon"
+        image="/images/santuario_small.jpg"
+        title="Mazmorra"
+        description="Explora las salas, trampas y secretos del Lodazal."
+      />
+      <MainCard 
+        href="/factions"
+        image="/images/gnomos.png"
+        title="Facciones"
+        description="Conoce a tus enemigos, aliados y víctimas potenciales."
+      />
+    </div>
+
+    <div class="text-center">
+      <a href="/contact" class="inline-block bg-accent text-background py-3 px-6 rounded shadow hover:scale-105 transition font-semibold">
+        Contacto
+      </a>
+    </div>
+  </section>
+</BaseLayout>

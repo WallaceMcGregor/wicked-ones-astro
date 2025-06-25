@@ -1,0 +1,27 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { personajes } from "../../data/characters";
+
+const { slug } = Astro.params;
+const personaje = personajes.find(p => p.slug === slug);
+
+if (!personaje) {
+  throw new Error("Personaje no encontrado");
+}
+
+export async function getStaticPaths() {
+  return personajes.map(personaje => ({
+    params: { slug: personaje.slug}
+  }));
+}
+---
+
+<BaseLayout title={personaje.nombre}>
+  <main class="py-10 max-w-2xl mx-auto px-4">
+    <img src={personaje.imagen} alt={personaje.nombre} class="w-full h-64 max-h-80 object-contain rounded mb-6" />
+    <h1 class="text-3xl font-bold text-primary mb-2">{personaje.nombre}</h1>
+    <p class="text-sm text-accent italic mb-4">{personaje.raza} - {personaje.rol}</p>
+    <p class="text-base text-secondary">{personaje.descripcion}</p>
+  </main>
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+const { href, image, title, description } = Astro.props;
+---
+
+<a
+  href={href}
+  class="group bg-surface hover:bg-secondary text-base p-6 rounded-lg shadow transition border border-secondary/30 flex flex-col items-center text-center"
+>
+  <img
+    src={image}
+    alt={title}
+    class="h-24 mb-4 object-contain"
+    loading="lazy"
+  />
+
+  <!-- El título conserva su color principal, no cambia en hover -->
+  <h2 class="text-xl text-primary font-semibold mb-1">
+    {title}
+  </h2>
+
+  <!-- El párrafo sí cambia en hover para conservar contraste -->
+  <p class="text-sm text-secondary group-hover:text-background transition-colors">
+    {description}
+  </p>
+</a>
