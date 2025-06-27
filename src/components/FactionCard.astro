@@ -1,0 +1,62 @@
+---
+import Sun from 'lucide-static/icons/sun.svg';
+import Moon from 'lucide-static/icons/moon.svg';
+import Circle from 'lucide-static/icons/circle.svg';
+
+const { nombre, descripcion, relojes, imagen, bando, nivel } = Astro.props;
+
+const romanos = ["I", "II", "III", "IV"];
+const nivelRomano = romanos[nivel - 1] ?? nivel;
+
+/** @param {string} bando */
+// @ts-ignore
+function getIcono(bando) {
+  if (bando === "luz") return Sun;
+  if (bando === "oscuridad") return Moon;
+  return Circle;
+}
+
+const Icono = getIcono(bando);
+---
+<div class="w-72 min-h-[360px] bg-surface border border-secondary/30 rounded-lg overflow-hidden shadow-lg flex flex-col">
+  <!-- Imagen principal con icono y nivel -->
+  <div class="relative">
+    <!-- Icono del bando -->
+    <div class="absolute top-2 left-2 w-6 h-6 text-white">
+      <Icono class="w-full h-full" />
+    </div>
+
+    <!-- Nivel en número romano -->
+    <div class="absolute top-2 right-2 text-sm bg-secondary text-background px-2 py-0.5 rounded">
+      {nivelRomano}
+    </div>
+
+    <!-- Imagen de la facción -->
+    <img 
+      src={imagen} 
+      alt={`Imagen de ${nombre}`} 
+      class="w-full aspect-square object-cover rounded-t"
+      loading="lazy"
+    />
+  </div>
+
+  <!-- Contenido textual -->
+  <div class="p-4 flex flex-col gap-2 flex-grow">
+    <h3 class="text-lg font-bold text-primary">{nombre}</h3>
+
+    <ul class="list-disc list-inside text-sm text-secondary space-y-1">
+      {/* @ts-ignore */}
+      {descripcion.map(punto => <li>{punto}</li>)}
+    </ul>
+
+    <div class="flex gap-4 mt-4 justify-center">
+      {/* @ts-ignore */}
+      {relojes.map(reloj => (
+        <div class="flex flex-col items-center w-24 text-center">
+          <img src={reloj.imagen} alt={reloj.nombre} class="w-full h-auto object-contain" />
+          <span class="text-xs text-secondary mt-1">{reloj.nombre}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
