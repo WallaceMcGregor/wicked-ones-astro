@@ -17,7 +17,7 @@ export const facciones = [
         imagen: "/images/reloj8.png"
       }
     ],
-    imagen: "/images/losHermanosDeLaPrimeraLlama.jpg",
+    imagen: "/images/facciones/losHermanosDeLaPrimeraLlama.jpg",
     bando: "luz",
     nivel: 4
   },
@@ -38,7 +38,7 @@ export const facciones = [
         imagen: "/images/reloj6.png"
       }
     ],
-    imagen: "/images/tribuGarraPonzoñosa.jpg",
+    imagen: "/images/facciones/garraPonzonosa.jpg",
     bando: "oscuridad",
     nivel: 3
   },
@@ -59,7 +59,7 @@ export const facciones = [
         imagen: "/images/reloj4.png"
       }
     ],
-    imagen: "/images/companiaDelTuerto.jpg",
+    imagen: "/images/facciones/companiaTuerto.jpg",
     bando: "luz",
     nivel: 3
   },
@@ -80,7 +80,7 @@ export const facciones = [
         imagen: "/images/reloj4.png"
       }
     ],
-    imagen: "/images/espectrosDeMalumbra.jpg",
+    imagen: "/images/facciones/espectrosDeMalumbra.jpg",
     bando: "neutral",
     nivel: 3
   },
@@ -101,7 +101,7 @@ export const facciones = [
         imagen: "/images/reloj6.png"
       }
     ],
-    imagen: "/images/gnomosDelAire.jpg",
+    imagen: "/images/facciones/gnomosDelAire.jpg",
     bando: "luz",
     nivel: 3
   },
@@ -122,7 +122,7 @@ export const facciones = [
         imagen: "/images/reloj6.png"
       }
     ],
-    imagen: "/images/guardabosques.jpg",
+    imagen: "/images/facciones/guardabosques.jpg",
     bando: "luz",
     nivel: 2
   },
@@ -143,7 +143,7 @@ export const facciones = [
         imagen: "/images/reloj8.png"
       }
     ],
-    imagen: "/images/arTelQuessir.jpg",
+    imagen: "/images/facciones/arTelQuessir.jpg",
     bando: "luz",
     nivel: 2
   },
@@ -164,7 +164,7 @@ export const facciones = [
         imagen: "/images/reloj6.png"
       }
     ],
-    imagen: "/images/gremioDeLadrones.jpg",
+    imagen: "/images/facciones/gremioDeLadrones.jpg",
     bando: "neutral",
     nivel: 2
   },
@@ -185,7 +185,7 @@ export const facciones = [
         imagen: "/images/reloj8.png"
       }
     ],
-    imagen: "/images/esevokElDevorador.jpg",
+    imagen: "/images/facciones/esevok.jpg",
     bando: "oscuridad",
     nivel: 2
   },
@@ -206,7 +206,7 @@ export const facciones = [
         imagen: "/images/reloj6.png"
       }
     ],
-    imagen: "/images/silentes.jpg",
+    imagen: "/images/facciones/silentes.jpg",
     bando: "neutral",
     nivel: 1
   },
@@ -227,7 +227,7 @@ export const facciones = [
         imagen: "/images/reloj8.png"
       }
     ],
-    imagen: "/images/teuTelQuessir.jpg",
+    imagen: "/images/facciones/teuTelQuessir.jpg",
     bando: "oscuridad",
     nivel: 1
   },
@@ -248,7 +248,7 @@ export const facciones = [
         imagen: "/images/reloj6.png"
       }
     ],
-    imagen: "/images/condadoDeMarcaforte.jpg",
+    imagen: "/images/facciones/condadoMarcaforte.jpg",
     bando: "luz",
     nivel: 4
   },
@@ -269,7 +269,7 @@ export const facciones = [
         imagen: "/images/reloj6.png"
       }
     ],
-    imagen: "/images/academiaDeMagos.jpg",
+    imagen: "/images/facciones/academiaDeMagos.jpg",
     bando: "neutral",
     nivel: 3
   },
@@ -290,7 +290,7 @@ export const facciones = [
         imagen: "/images/reloj4.png"
       }
     ],
-    imagen: "/images/granjerosDeMarcaforte.jpg",
+    imagen: "/images/facciones/granjerosMarcaforte.jpg",
     bando: "luz",
     nivel: 1
   },
@@ -311,7 +311,7 @@ export const facciones = [
         imagen: "/images/reloj8.png"
       }
     ],
-    imagen: "/images/clanClaroSangrante.jpg",
+    imagen: "/images/facciones/clanClaroSangrante.jpg",
     bando: "oscuridad",
     nivel: 2
   },
@@ -332,7 +332,7 @@ export const facciones = [
         imagen: "/images/reloj6.png"
       }
     ],
-    imagen: "/images/corteDelAmanecer.jpg",
+    imagen: "/images/facciones/corteAmanecer.jpg",
     bando: "neutral",
     nivel: 3
   }

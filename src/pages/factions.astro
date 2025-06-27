@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FactionCard from "../components/FactionCard.astro";
+import { facciones } from "../data/factions";
+
+//Agrupar por bando y ordenar cada grupo por nivel descendiente
+const ordenBando = ["luz", "neutral", "oscuridad"];
+
+const faccionesOrdenadas = ordenBando.flatMap(bando =>
+  facciones
+    .filter(f => f.bando === bando)
+    .sort((a, b) => b.nivel - a.nivel)
+
+);
+---
+
+<BaseLayout title="Facciones">
+  <main class="py-10 px-4 max-w-6xl mx-auto">
+    <h1 class="text-center text-4xl font-bold mb-10 text-primary font-serif">Facciones de Las fauces del Vórtice</h1>
+
+    <div class="flex flex-wrap justify-center gap-6 items-stretch">
+      {/* @ts-ignore */}
+      {faccionesOrdenadas.map((faccion) => (
+        <FactionCard 
+          nombre={faccion.nombre}
+          descripcion={faccion.descripcion}
+          relojes={faccion.relojes}
+          imagen={faccion.imagen}
+          bando={faccion.bando}
+          nivel={faccion.nivel}
+        />
+      ))
+
+      }
+    </div>
+  </main>
+</BaseLayout>
