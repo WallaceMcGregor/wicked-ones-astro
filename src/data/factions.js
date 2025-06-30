@@ -255,9 +255,10 @@ export const facciones = [
   {
     nombre: "Academia de magos",
     descripcion: [
-      "Un centro dedicado al estudio y la práctica de las artes arcanas.",
-      "Se esfuerzan por aprisionar entidades peligrosas y obtener conocimientos mágicos de otras razas.",
-      "Su enfoque está en la acumulación de saber y poder a través de la magia. (Esta descripción es una inferencia basada en sus relojes y el rol típico de una academia de magos en fantasía, ya que no hay una descripción explícita en las 'Facciones del Viejo Mundo')."
+      "Enanos que basan sus poderes en la conjunción de runas.",
+      "Tienen a su servicio a un grupo de enanos mineros que extraen piedra de las minas.",
+      "Hace tiempo, los mineros extrajeron ciertas piedras con unas runas grabadas. Los académicos estudian estas ruinas y mantienen a los mineros en busca de más.",
+      "Su objetivo principal es extraer más poder de las runas y entender el origen de las piedras rúnicas."
     ],
     relojes: [
       {
@@ -270,15 +271,15 @@ export const facciones = [
       }
     ],
     imagen: "/images/facciones/academiaDeMagos.jpg",
-    bando: "neutral",
-    nivel: 3
+    bando: "luz",
+    nivel: 1
   },
   {
     nombre: "Granjeros de Marcaforte",
     descripcion: [
-      "Comunidades agrícolas que proveen recursos al Condado Marcaforte.",
-      "Buscan mejorar sus condiciones y ejercer influencia en la región a través de la cohesión comunitaria.",
-      "Son gente sencilla y trabajadora, fundamental para el sustento de la región. (Esta descripción es una inferencia basada en sus relojes y el rol típico de granjeros en fantasía, ya que no hay una descripción explícita en las 'Facciones del Viejo Mundo', aunque se mencionan 'Granjeros' en otros contextos)."
+      "Granjeros oprimidos al servicio del conde Augusto de Portier.",
+      "Van a iniciar una revuelta porque el conde se encomendó a los nuevos dioses y destruyó sus templos.",
+      "Cuando acaben con el conde, derribarán el nuevo templo y lo erigirán de nuevo en honor a los antiguos dioses."
     ],
     relojes: [
       {
@@ -297,9 +298,9 @@ export const facciones = [
   {
     nombre: "Clan Claro Sangrante",
     descripcion: [
-      "Un clan misterioso que realiza sacrificios para repeler a aquellos que considera una amenaza.",
-      "Muestra hostilidad hacia los guardabosques y busca someter a otros poderes, como la Corte del Amanecer.",
-      "Su existencia está ligada a rituales y prácticas que ahuyentan a sus enemigos. (Esta descripción es una inferencia basada en sus relojes, ya que no hay una descripción explícita en las 'Facciones del Viejo Mundo')."
+      "Poderoso clan de centauros.",
+      "Poseen el innegable control del bosque.",
+      "Su objetivo es explotar el bosque y controlar sus recursos."
     ],
     relojes: [
       {
@@ -312,15 +313,16 @@ export const facciones = [
       }
     ],
     imagen: "/images/facciones/clanClaroSangrante.jpg",
-    bando: "oscuridad",
-    nivel: 2
+    bando: "neutral",
+    nivel: 4
   },
   {
     nombre: "Corte del Amanecer",
     descripcion: [
-      "Una facción involucrada en rituales, posiblemente de naturaleza mística o espiritual.",
-      "Busca establecer una conexión simbiótica con las Silentes.",
-      "Sus propósitos se centran en ritos que pueden influir en el mundo, como el Rito del Amanecer. (Esta descripción es una inferencia basada en sus relojes, ya que no hay una descripción explícita en las 'Facciones del Viejo Mundo')."
+      "Hadas diminutas que actúan en simbiosis con otros seres, siendo el deseo de cualquier alquimista.",
+      "Su pequeño reino en el bosque está oculto mediante ilusiones que desorientan a los intrusos.",
+      "Odian a las criaturas de la oscuridad, pues han invadido demasiadas veces su territorio.",
+      "Tratan te evitar que la sombra engulla su territorio."
     ],
     relojes: [
       {
@@ -334,6 +336,6 @@ export const facciones = [
     ],
     imagen: "/images/facciones/corteAmanecer.jpg",
     bando: "neutral",
-    nivel: 3
+    nivel: 1
   }
 ];
