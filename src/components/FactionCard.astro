@@ -1,29 +1,27 @@
 ---
-import Sun from 'lucide-static/icons/sun.svg';
-import Moon from 'lucide-static/icons/moon.svg';
-import Circle from 'lucide-static/icons/circle.svg';
-
 const { nombre, descripcion, relojes, imagen, bando, nivel } = Astro.props;
 
 const romanos = ["I", "II", "III", "IV"];
 const nivelRomano = romanos[nivel - 1] ?? nivel;
 
 /** @param {string} bando */
-// @ts-ignore
-function getIcono(bando) {
-  if (bando === "luz") return Sun;
-  if (bando === "oscuridad") return Moon;
-  return Circle;
-}
 
-const Icono = getIcono(bando);
 ---
 <div class="w-72 min-h-[360px] bg-surface border border-secondary/30 rounded-lg overflow-hidden shadow-lg flex flex-col">
   <!-- Imagen principal con icono y nivel -->
   <div class="relative">
     <!-- Icono del bando -->
-    <div class="absolute top-2 left-2 w-6 h-6 text-white">
-      <Icono class="w-full h-full" />
+    <div class="absolute top-2 left-2">
+      <iconify-icon
+        icon={
+          bando === "luz"
+            ? "mdi:white-balance-sunny"
+            : bando === "oscuridad"
+              ? "mdi:moon-waning-crescent"
+              : "mdi:circle-outline"
+        }
+        width="26" height="26" class="text-white"
+      />
     </div>
 
     <!-- Nivel en número romano -->
