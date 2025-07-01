@@ -11,7 +11,8 @@
   "dependencies": {
     "@astrojs/tailwind": "^6.0.2",
     "@tailwindcss/vite": "^4.1.8",
-    "astro": "^5.9.1"
+    "astro": "^5.9.1",
+    "iconify-icon": "^3.0.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.10",
