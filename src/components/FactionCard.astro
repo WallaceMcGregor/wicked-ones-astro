@@ -3,27 +3,31 @@ const { nombre, descripcion, relojes, imagen, bando, nivel } = Astro.props;
 
 const romanos = ["I", "II", "III", "IV"];
 const nivelRomano = romanos[nivel - 1] ?? nivel;
-
-/** @param {string} bando */
-
 ---
+
 <div class="w-72 min-h-[360px] bg-surface border border-secondary/30 rounded-lg overflow-hidden shadow-lg flex flex-col">
   <!-- Imagen principal con icono y nivel -->
   <div class="relative">
     <!-- Icono del bando -->
-    <div class="absolute top-2 left-2">
-      <iconify-icon
-        icon={
-          bando === "luz"
-            ? "mdi:white-balance-sunny"
-            : bando === "oscuridad"
-              ? "mdi:moon-waning-crescent"
-              : "mdi:circle-outline"
-        }
-        width="26" height="26" class="text-white"
-      />
-    </div>
+    <div class="absolute top-2 left-2 w-7 h-7 text-white fill-current">
+      {bando === 'luz' && (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-full h-full">
+          <path d="M12 4V2M12 22v-2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12H4M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 8a4 4 0 100 8 4 4 0 000-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      )}
 
+      {bando === 'oscuridad' && (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-full h-full">
+          <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 0010.59 9.79z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      )}
+
+      {bando === 'neutral' && (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-full h-full">
+          <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" />
+        </svg>
+      )}
+    </div>
     <!-- Nivel en número romano -->
     <div class="absolute top-2 right-2 text-sm bg-white text-background px-2 py-0.5 rounded">
       {nivelRomano}
@@ -56,6 +60,5 @@ const nivelRomano = romanos[nivel - 1] ?? nivel;
         </div>
       ))}
     </div>
-
   </div>
 </div>

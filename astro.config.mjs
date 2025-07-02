@@ -3,4 +3,9 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   integrations: [tailwind()],
+  compilerOptions: {
+    tags: {
+      customElements: ['iconify-icon'],
+    }
+  }
 });
