@@ -1,5 +1,5 @@
 ---
-const { href, image, title, description } = Astro.props;
+const { href, image, title } = Astro.props;
 ---
 
 <a
@@ -20,6 +20,6 @@ const { href, image, title, description } = Astro.props;
 
   <!-- El párrafo sí cambia en hover para conservar contraste -->
   <p class="text-sm text-secondary group-hover:text-background transition-colors">
-    {description}
+    <slot />
   </p>
 </a>
