@@ -23,12 +23,23 @@ const faccionesOrdenadas = ordenBando.flatMap(bando =>
       {faccionesOrdenadas.map((faccion) => (
         <FactionCard 
           nombre={faccion.nombre}
-          descripcion={faccion.descripcion}
-          relojes={faccion.relojes}
           imagen={faccion.imagen}
           bando={faccion.bando}
           nivel={faccion.nivel}
-        />
+        >
+          <ul slot="descripcion" class="list-disc list-inside space-y-1">
+            {faccion.descripcion.map(punto => <li>{punto}</li>)}
+          </ul>
+
+          <div slot="relojes" class="space-y-2">
+            {faccion.relojes.map(reloj => (
+              <div class="flex items-center gap-3">
+                <img src={reloj.imagen} alt={reloj.nombre} class="w-8 h-8 object-contain" />
+                <span class="text-sm text-secondary">{reloj.nombre}</span>
+              </div>
+            ))}
+          </div>
+        </FactionCard>
       ))
 
       }
