@@ -45,7 +45,7 @@ import { elementosMazmorra } from "../data/dungeon.js";
 
 
   <!-- LIGHTBOX -->
-  <div id="lightbox" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 hidden">
+  <div id="lightbox" class="fixed inset-0 bg-black/80 items-center justify-center z-50 hidden">
     <img id="lightbox-image" src="" alt="Vista ampliada" class="max-h-[900vh] max-w-[90vw] rounded shadow-lg" />
   </div>
   
@@ -63,11 +63,13 @@ import { elementosMazmorra } from "../data/dungeon.js";
       const src = e.target.getAttribute('data-lightbox');
       lightboxImg.src = src;
       lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
     }
 
     // Si haces clic fuera de la imagen (en el fondo oscuro), se cierra
     if (e.target === lightbox) {
       lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
       lightboxImg.src = '';
     }
   });
