@@ -2,7 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 //Cargar todos los archivos de registros
-const entradas = await Astro.glob("../content/registros/*.md");
+const archivos = import.meta.glob("../content/registros/*.md", { eager: true });
+
+const entradas = Object.values(archivos);
 
 //Ordenar por fecha descendente
 entradas.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
