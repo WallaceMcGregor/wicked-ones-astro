@@ -32,10 +32,12 @@ import { elementosMazmorra } from "../data/dungeon.js";
       {
         elementosMazmorra.map(item => (
           <DungeonCard 
-            nombre={item.nombre}
-            descripcion={item.descripcion}
             imagen={item.imagen}
-          />
+          >
+            <span slot="titulo">{item.nombre}</span>
+            <span slot="descripcion">{item.descripcion}</span>
+          </DungeonCard>
+
         ))
       }
     </div>

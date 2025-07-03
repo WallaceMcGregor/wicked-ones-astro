@@ -1,5 +1,5 @@
 ---
-const { nombre, descripcion, imagen } = Astro.props;
+const { imagen, nombre } = Astro.props;
 ---
 
 <div class="w-72 min-h-[360px] bg-surface border border-secondary/30 rounded-lg overflow-hidden shadow-lg flex flex-col h-full">
@@ -12,7 +12,12 @@ const { nombre, descripcion, imagen } = Astro.props;
   />
 
   <div class="p-4 flex flex-col gap-2 flex-grow">
-    <h3 class="text-lg font-bold text-primary">{nombre}</h3>
-    <p class="text-sm text-secondary">{descripcion}</p>
+    <h3 class="text-lg font-bold text-primary">
+      <slot name="titulo" />
+    </h3>
+
+    <p class="text-sm text-secondary">
+      <slot name="descripcion" />
+    </p>
   </div>
 </div>
