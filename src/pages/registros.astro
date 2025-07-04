@@ -1,16 +1,29 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-//Cargar todos los archivos de registros
+// Cargar todos los archivos .md con import.meta.glob de forma directa
 const archivos = import.meta.glob("../content/registros/*.md", { eager: true });
 
-const entradas = Object.values(archivos);
+// Convertir los archivos a un array con tipado directo (sin tipos externos)
+const entradas = Object.values(archivos) as {
+  frontmatter: {
+    title: string;
+    date: string;
+    resumen: string;
+  };
+  url: string;
+  Content: any;
+}[];
 
-//Ordenar por fecha descendente
-entradas.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+// Ordenar por fecha descendente
+entradas.sort(
+  (a, b) =>
+    new Date(b.frontmatter.date).getTime() -
+    new Date(a.frontmatter.date).getTime()
+);
 
-// Función para formatear fechas en español
-function formatearFecha(fechaStr) {
+// Formatear fecha en español
+function formatearFecha(fechaStr: string) {
   const fecha = new Date(fechaStr);
   return fecha.toLocaleDateString("es-ES", {
     day: "numeric",
@@ -22,13 +35,19 @@ function formatearFecha(fechaStr) {
 
 <BaseLayout title="Registros de la campaña">
   <main class="max-w-4xl mx-auto px-6 py-16">
-    <h1 class="text-4xl font-bold text-primary font-serif mb-10 text-center">Registros de la campaña</h1>
+    <h1 class="text-4xl font-bold text-primary font-serif mb-10 text-center">
+      Registros de la campaña
+    </h1>
 
     <div class="space-y-8">
       {entradas.map((entrada) => (
         <article class="bg-surface border border-secondary/30 rounded p-6 shadow">
-          <h2 class="text-2xl font-bold text-primary mb-2">{entrada.frontmatter.title}</h2>
-          <p class="text-sm text-secondary mb-4">{formatearFecha(entrada.frontmatter.date)}</p>
+          <h2 class="text-2xl font-bold text-primary mb-2">
+            {entrada.frontmatter.title}
+          </h2>
+          <p class="text-sm text-secondary mb-4">
+            {formatearFecha(entrada.frontmatter.date)}
+          </p>
           <p class="text-secondary">{entrada.frontmatter.resumen}</p>
         </article>
       ))}
