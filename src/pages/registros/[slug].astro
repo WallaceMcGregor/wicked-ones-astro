@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// Cargar todas las entradas markdown
+const archivos = import.meta.glob("../../content/registros/*.md", { eager: true });
+
+// Obtener el slug de la URL
+const slug = Astro.params.slug;
+
+// Forzar el tipo exacto para cada entrada
+const entrada = Object.entries(archivos).find(([path]) =>
+  path.includes(`${slug}.md`)
+)?.[1] as {
+  frontmatter: {
+    title: string;
+    date: string;
+    resumen: string;
+  };
+  Content: AstroComponentFactory;
+};
+
+if (!entrada) {
+  throw new Error("Entrada no encontrada");
+}
+---
+
+<BaseLayout title={entrada.frontmatter.title}>
+  <main class="max-w-3xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold text-primary font-serif mb-6 text-center">
+      {entrada.frontmatter.title}
+    </h1>
+
+    <p class="text-sm text-secondary mb-10 text-center">
+      {new Date(entrada.frontmatter.date).toLocaleDateString("es-ES", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })}
+    </p>
+
+    <div class="prose prose-invert max-w-none">
+      <entrada.Content />
+    </div>
+  </main>
+</BaseLayout>
