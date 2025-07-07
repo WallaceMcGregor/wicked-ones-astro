@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.8",
     "astro": "^5.9.1",
     "iconify-icon": "^3.0.0"

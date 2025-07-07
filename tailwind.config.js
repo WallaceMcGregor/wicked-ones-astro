@@ -1,7 +1,11 @@
 /** @type {import('tailwindcss').Config} */
+import typography from '@tailwindcss/typography';
+
 export default {
-  content: ["./src/**/*.{astro,html,js,jsx,ts,tsx}"],
-  darkMode: "class", // o quítalo si no usamos alternancia
+  content: [
+    "./src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}"
+  ],
+  darkMode: "class", // o 'media' si prefieres el sistema
   theme: {
     extend: {
       colors: {
@@ -13,5 +17,5 @@ export default {
       }
     }
   },
-  plugins: []
+  plugins: [typography]
 };
