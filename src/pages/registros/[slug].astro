@@ -1,6 +1,16 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
+export async function getStaticPaths() {
+  const archivos = import.meta.glob("../../content/registros/*.md", { eager: true });
+
+  return Object.keys(archivos).map((path) => {
+    const slug = path.split("/").pop()?.replace(".md", "") ?? "";
+    return { params: { slug } };
+  });
+}
+
+
 // Cargar todos los archivos Markdown
 const archivos = import.meta.glob("../../content/registros/*.md", { eager: true });
 

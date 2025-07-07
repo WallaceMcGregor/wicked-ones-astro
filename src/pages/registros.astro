@@ -1,19 +1,18 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-// Cargar todos los archivos .md con import.meta.glob de forma directa
+// Cargar todos los archivos .md con import.meta.glob
 const archivos = import.meta.glob("../content/registros/*.md", { eager: true });
 
-// Convertir los archivos a un array con tipado directo (sin tipos externos)
-const entradas = Object.values(archivos) as {
-  frontmatter: {
-    title: string;
-    date: string;
-    resumen: string;
+// Convertir a array de entradas con su URL generada
+const entradas = Object.entries(archivos).map(([ruta, entrada]: [string, any]) => {
+  const slug = (ruta.split("/").pop() ?? "").replace(".md", "");
+  return {
+    frontmatter: entrada.frontmatter,
+    Content: entrada.Content,
+    url: `/registros/${slug}`,
   };
-  url: string;
-  Content: any;
-}[];
+});
 
 // Ordenar por fecha descendente
 entradas.sort(
@@ -22,7 +21,7 @@ entradas.sort(
     new Date(a.frontmatter.date).getTime()
 );
 
-// Formatear fecha en español
+// Función para formatear fecha en español
 function formatearFecha(fechaStr: string) {
   const fecha = new Date(fechaStr);
   return fecha.toLocaleDateString("es-ES", {
@@ -43,12 +42,9 @@ function formatearFecha(fechaStr: string) {
       {entradas.map((entrada) => (
         <article class="bg-surface border border-secondary/30 rounded p-6 shadow">
           <h2 class="text-2xl font-bold text-primary mb-2 hover:underline">
-            <a
-              href={entrada.url}
-              class="hover:underline hover:text-accent cursor-pointer transition"
-              >
-                {entrada.frontmatter.title}
-              </a>
+            <a href={entrada.url} class="hover:cursor-pointer">
+              {entrada.frontmatter.title}
+            </a>
           </h2>
           <p class="text-sm text-secondary mb-4">
             {formatearFecha(entrada.frontmatter.date)}
