@@ -1,53 +1,50 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
 
+// 1. Generar una ruta para cada entrada de la colección
 export async function getStaticPaths() {
-  const archivos = import.meta.glob("../../content/registros/*.md", { eager: true });
+  const entries = await getCollection("registros");
+  return entries.map((entry) => ({
+    params: { slug: entry.slug }, // El 'slug' para la URL
+    props: { entry }, // Pasar la entrada completa como 'props'
+  }));
+}
 
-  return Object.keys(archivos).map((path) => {
-    const slug = path.split("/").pop()?.replace(".md", "") ?? "";
-    return { params: { slug } };
+// Definir el tipo de las props que recibimos de getStaticPaths
+type Props = {
+  entry: CollectionEntry<"registros">;
+};
+
+const { entry } = Astro.props;
+const { Content } = await entry.render(); // Obtener el componente de contenido
+
+// Función para formatear la fecha
+function formatDate(date: Date) {
+  return date.toLocaleDateString("es-ES", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
   });
 }
-
-
-// Cargar todos los archivos Markdown
-const archivos = import.meta.glob("../../content/registros/*.md", { eager: true });
-
-// Obtener el slug desde la URL
-const slug = Astro.params.slug;
-
-// Obtener el archivo correspondiente
-const entradaRaw = Object.entries(archivos).find(([ruta]) =>
-  ruta.includes(`${slug}.md`)
-)?.[1];
-
-if (!entradaRaw || typeof entradaRaw !== "object") {
-  throw new Error("Entrada no encontrada o malformada.");
-}
-
-// Ignoramos el tipado exacto para evitar errores innecesarios
-// @ts-ignore
-const { frontmatter, Content } = entradaRaw;
 ---
 
-<BaseLayout title={frontmatter.title}>
+<BaseLayout title={entry.data.title}>
   <main class="max-w-3xl mx-auto px-6 py-16">
     <h1 class="text-4xl font-bold text-primary font-serif mb-6 text-center">
-      {frontmatter.title}
+      {entry.data.title}
     </h1>
 
     <p class="text-sm text-secondary mb-10 text-center">
-      {new Date(frontmatter.date).toLocaleDateString("es-ES", {
-        day: "numeric",
-        month: "long",
-        year: "numeric"
-      })}
+      {formatDate(entry.data.date)}
     </p>
 
-    <div class="prose prose-invert prose-headings:text-primary prose-p:text-base prose-p:text-secondary prose-li:marker:text-accent prose-li:text-secondary prose-a:text-accent max-w-none text-justify">
-      {/* @ts-ignore */}
+    {/* El componente <Content /> renderiza el cuerpo de tu archivo .md */}
+    {/* Lo envolvemos en 'article' para aplicar los estilos de tipografía */}
+    <article
+      class="prose prose-invert prose-headings:text-primary prose-p:text-base prose-p:text-secondary prose-li:marker:text-accent prose-li:text-secondary prose-a:text-accent max-w-none text-justify"
+    >
       <Content />
-    </div>
+    </article>
   </main>
 </BaseLayout>

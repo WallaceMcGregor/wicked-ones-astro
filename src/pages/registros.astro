@@ -1,30 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 
-// Cargar todos los archivos .md con import.meta.glob
-const archivos = import.meta.glob("../content/registros/*.md", { eager: true });
+// Obtener todas las entradas de la colección 'registros'.
+// ¡Ahora aprovecha el `config.ts` que creamos!
+const allEntries = await getCollection("registros");
 
-// Convertir a array de entradas con su URL generada
-const entradas = Object.entries(archivos).map(([ruta, entrada]: [string, any]) => {
-  const slug = (ruta.split("/").pop() ?? "").replace(".md", "");
-  return {
-    frontmatter: entrada.frontmatter,
-    Content: entrada.Content,
-    url: `/registros/${slug}`,
-  };
-});
-
-// Ordenar por fecha descendente
-entradas.sort(
-  (a, b) =>
-    new Date(b.frontmatter.date).getTime() -
-    new Date(a.frontmatter.date).getTime()
+// Ordenar las entradas por fecha, de más nueva a más antigua.
+const sortedEntries = allEntries.sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 
-// Función para formatear fecha en español
-function formatearFecha(fechaStr: string) {
-  const fecha = new Date(fechaStr);
-  return fecha.toLocaleDateString("es-ES", {
+// Función para formatear la fecha (el objeto Date ya viene procesado).
+function formatDate(date: Date) {
+  return date.toLocaleDateString("es-ES", {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -39,17 +28,17 @@ function formatearFecha(fechaStr: string) {
     </h1>
 
     <div class="space-y-8">
-      {entradas.map((entrada) => (
+      {sortedEntries.map((entry) => (
         <article class="bg-surface border border-secondary/30 rounded p-6 shadow">
           <h2 class="text-2xl font-bold text-primary mb-2 hover:underline">
-            <a href={entrada.url} class="hover:cursor-pointer">
-              {entrada.frontmatter.title}
+            <a href={`/registros/${entry.slug}`} class="hover:cursor-pointer">
+              {entry.data.title}
             </a>
           </h2>
           <p class="text-sm text-secondary mb-4">
-            {formatearFecha(entrada.frontmatter.date)}
+            {formatDate(entry.data.date)}
           </p>
-          <p class="text-secondary">{entrada.frontmatter.resumen}</p>
+          <p class="text-secondary">{entry.data.resumen}</p>
         </article>
       ))}
     </div>
