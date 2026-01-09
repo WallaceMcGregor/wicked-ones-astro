@@ -1,8 +1,8 @@
 ---
 const { nombre, slug, raza, rol, imagen, detalle } = Astro.props;
 ---
-<a href={`/characters/${slug}`} class="block transition-transform hover:scale-105">
-  <div class="bg-surface hover:bg-secondary p-6 rounded-lg shadow-md border border-secondary/30 flex flex-col items-center text-center h-full">
+<a href={`/characters/${slug}`} class="block">
+  <div class="bg-surface hover:bg-secondary p-6 rounded-lg shadow-md border border-secondary/30 flex flex-col items-center text-center h-full transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl">
 
     <!-- Imagen superior -->
     <div class="flex justify-center items-center h-28 mb-4">
