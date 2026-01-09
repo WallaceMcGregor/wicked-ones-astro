@@ -29,7 +29,7 @@ function formatDate(date: Date) {
 
     <div class="space-y-8">
       {sortedEntries.map((entry) => (
-        <article class="bg-surface border border-secondary/30 rounded p-6 shadow">
+        <article class="bg-surface border border-secondary/30 rounded p-6 shadow transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl">
           <h2 class="text-2xl font-bold text-primary mb-2 hover:underline">
             <a href={`/registros/${entry.slug}`} class="hover:cursor-pointer">
               {entry.data.title}
