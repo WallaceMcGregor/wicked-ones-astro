@@ -12,9 +12,13 @@ export default {
         background: "#111111",
         surface: "#1f1f1f",
         primary: "#b53737",
-        secondary: "#67574b",
+        secondary: "#857468",
         accent: "#d5b884",
         base: "#eae6df"
+      },
+      fontFamily: {
+        sans: ['"Alegreya Sans"', 'sans-serif'],
+        serif: ['MedievalSharp', 'cursive'],
       }
     }
   },

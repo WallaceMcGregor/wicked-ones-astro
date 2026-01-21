@@ -4,44 +4,62 @@ import MainCard from "../components/MainCard.astro";
 ---
 
 <BaseLayout title="El Lodazal de los Antiguos">
-  <section class="bg-background text-base max-w-5xl mx-auto px-6 py-20">
-    <header class="mb-12 text-center">
-      <h1 class="text-5xl font-bold text-primary font-serif mb-4">
-        El Lodazal de los Antiguos
-      </h1>
-      <p class="text-secondary text-lg leading-relaxed max-w-2xl mx-auto">
-        Bienvenido a la campaña de <strong>Wicked Ones</strong> ambientada en <em>Las Fauces del Vórtice</em>, donde monstruos de las profundidades forjan su destino en una mazmorra viva, hambrienta y llena de posibilidades.
-      </p>
-    </header>
+  <div class="relative h-[50vh] flex flex-col items-center justify-center overflow-hidden">
+    
+    {/* --- Imagen de fondo (no participa en el flex layout) --- */}
+    <img 
+      src="/images/mazmorra/foso.jpg" 
+      alt="Una vista del foso de la mazmorra" 
+      class="absolute top-0 left-0 w-full h-full object-cover brightness-50" 
+    />
+    
+    {/* --- Contenido de texto (ahora son items del flex) --- */}
+    <h1 class="relative text-5xl font-bold text-white font-serif mb-4 text-center">
+      El Lodazal de los Antiguos
+    </h1>
+    <p class="relative text-lg text-white/90 leading-relaxed max-w-2xl px-4 text-center">
+      Bienvenido a la campaña de <strong>Wicked Ones</strong> ambientada en <em>Las Fauces del Vórtice</em>, donde los malvados gobiernan una mazmorra viva, hambrienta y llena de posibilidades.
+    </p>
+  </div>
 
-    <div class="grid sm:grid-cols-2 gap-6 mb-10">
-      <MainCard 
+  <section class="bg-background text-base max-w-5xl mx-auto px-6 py-12">
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      <MainCard
+        href="/dungeon"
+        image="/images/santuario_small.jpg"
+        title="Mazmorra"
+        class="md:col-span-2"
+      >
+        <p class="text-sm text-secondary group-hover:text-base transition-colors">Explora las salas, trampas y secretos del Lodazal de los Antiguos.</p>
+      </MainCard>
+      <MainCard
+        href="/registros"
+        image="/images/registros.png"
+        title="Registros"
+      >
+        <p class="text-sm text-secondary group-hover:text-base transition-colors">Bitácora de aventuras, sucesos y decisiones de la campaña.</p>
+      </MainCard>
+      <MainCard
         href="/characters"
         image="/images/drogo.png"
         title="Personajes jugadores"
       >
         <p class="text-sm text-secondary group-hover:text-base transition-colors">Los malvados que quieren controlar Las Fauces del Vórtice.</p>
       </MainCard>
-      <MainCard 
-        href="/sandbox"
-        image="/images/entorno_small.jpg"
-        title="Entorno"
-      >
-        <p class="text-sm text-secondary group-hover:text-base transition-colors">Las peligrosas tierras que rodean tu mazmorra.</p>
-      </MainCard>
-      <MainCard 
-        href="/dungeon"
-        image="/images/santuario_small.jpg"
-        title="Mazmorra"
-      >
-        <p class="text-sm text-secondary group-hover:text-base transition-colors">Explora las salas, trampas y secretos del Lodazal.</p>
-      </MainCard>
-      <MainCard 
+      <MainCard
         href="/factions"
         image="/images/gnomos.png"
         title="Facciones"
       >
         <p class="text-sm text-secondary group-hover:text-base transition-colors">Conoce a tus enemigos, aliados y víctimas potenciales.</p>
+      </MainCard>
+      <MainCard
+        href="/sandbox"
+        image="/images/entorno_small.jpg"
+        title="Entorno"
+      >
+        <p class="text-sm text-secondary group-hover:text-base transition-colors">Las peligrosas tierras que rodean tu mazmorra.</p>
       </MainCard>
     </div>
 
