@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Archivo de referencia
+Wicked Ones SD.pdf
